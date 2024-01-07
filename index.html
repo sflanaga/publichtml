@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <style>
+    html {
+      font-family: Helvetica;
+      font-size: 14px;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      text-align: left;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 5px 7px;
+      text-decoration: none;
+      font-size: 23px;
+      margin: 2px;
+      cursor: pointer;
+    }
+
+    .button2 {
+      background-color: #555555;
+    }
+
+
+    table {
+      border: 1px solid #eee;
+      /* Lighter grey border for table */
+      border-collapse: collapse;
+      table-layout: auto;
+    }
+
+    th {
+      padding: 3px;
+      /* Adjust padding as needed */
+      word-wrap: break-word !important;
+      ;
+      /* white-space: normal; */
+      border: 2pt solid #070708;
+      background-color: #d4a3a3;
+      /* Light grey for odd rows */
+    }
+
+    td {
+      padding: 3px;
+      /* Adjust padding as needed */
+      /* white-space: normal; */
+      border: 1pt solid #0c1ccf
+    }
+
+    tr:nth-child(odd) {
+      background-color: #a1f7f2;
+      /* Light grey for odd rows */
+    }
+
+    tr:nth-child(even) {
+      background-color: #cad3f1;
+      /* Lighter grey for even rows */
+    }
+  </style>
+</head>
+
+<body>
+
+  <pre>Current Time 2024-01-06T20:08:04
+First known time: 2024-01-06T20:03:44  
+Request count: 9 
+Last reboot reason: ESP_RST_UNKNOWN: Reset reason can not be determined
+Deep sleep interval: 30 secs
+Stay awake: true
+</pre>
+  <a href="/home"><button class="button">Home</button></a>
+  <a href="/temps_now"><button class="button">Temps Now</button></a>
+  <a href="/log"><button class="button">Sys log</button></a>
+  <button class="button" onclick="window.location.href='/settime_t?time_t=' + Math.floor(Date.now() / 1000);">*Set
+    Time*</button>
+  <a href="/measurements"><button class="button">all temps</button></a>
+  <a href="/chart"><button class="button">Chart</button></a>
+  <a href="/spiffs"><button class="button">Check FS</button></a>
+  <a href="/download"><button class="button">download csv</button></a>
+  <a href="/stats"><button class="button">Stats</button></a>
+  <a href="/cb"><button class="button">CB</button></a>
+  <a href="/sleep"><button class="button">Sleep</button></a>
+  <a href="/stayawake"><button class="button">Stay Awake</button></a>
+  <a href="/dryheat"><button class="button">Dry Heat</button></a>
+  <a href="/restart"><button class="button">Restart</button></a>
+  <p>
+    <script> srcData = [
+        { time: '2024-01-05T16:02:21', cpu_temp_f: 96.64, sht4x_temp_f: 71.01, sht4x_humidity: 33.05 },
+        { time: '2024-01-06T05:30:00', cpu_temp_f: 35.07, sht4x_temp_f: 31.37, sht4x_humidity: 96.11 },
+        { time: '2024-01-06T05:35:00', cpu_temp_f: 35.07, sht4x_temp_f: 31.24, sht4x_humidity: 96.04 },
+        { time: '2024-01-06T05:40:00', cpu_temp_f: 35.07, sht4x_temp_f: 31.17, sht4x_humidity: 95.75 },
+        { time: '2024-01-06T05:45:00', cpu_temp_f: 35.07, sht4x_temp_f: 31.19, sht4x_humidity: 95.45 },
+        { time: '2024-01-06T05:50:00', cpu_temp_f: 35.07, sht4x_temp_f: 31.15, sht4x_humidity: 94.80 },
+        { time: '2024-01-06T05:55:00', cpu_temp_f: 35.07, sht4x_temp_f: 31.13, sht4x_humidity: 95.56 },
+        { time: '2024-01-06T06:00:00', cpu_temp_f: 34.28, sht4x_temp_f: 31.00, sht4x_humidity: 95.18 },
+        { time: '2024-01-06T06:05:00', cpu_temp_f: 35.07, sht4x_temp_f: 31.07, sht4x_humidity: 94.95 },
+        { time: '2024-01-06T06:10:01', cpu_temp_f: 35.07, sht4x_temp_f: 31.04, sht4x_humidity: 95.58 },
+        { time: '2024-01-06T06:15:00', cpu_temp_f: 35.07, sht4x_temp_f: 31.08, sht4x_humidity: 94.34 },
+        { time: '2024-01-06T06:20:00', cpu_temp_f: 35.07, sht4x_temp_f: 31.19, sht4x_humidity: 95.20 },
+        { time: '2024-01-06T06:25:00', cpu_temp_f: 35.07, sht4x_temp_f: 31.04, sht4x_humidity: 95.35 },
+        { time: '2024-01-06T06:30:00', cpu_temp_f: 35.07, sht4x_temp_f: 31.04, sht4x_humidity: 94.89 },
+        { time: '2024-01-06T06:35:01', cpu_temp_f: 35.07, sht4x_temp_f: 31.06, sht4x_humidity: 95.36 },
+        { time: '2024-01-06T06:40:00', cpu_temp_f: 34.28, sht4x_temp_f: 31.10, sht4x_humidity: 95.37 },
+        { time: '2024-01-06T06:45:00', cpu_temp_f: 35.07, sht4x_temp_f: 30.93, sht4x_humidity: 95.15 },
+        { time: '2024-01-06T06:50:00', cpu_temp_f: 35.07, sht4x_temp_f: 31.01, sht4x_humidity: 94.38 },
+        { time: '2024-01-06T07:45:00', cpu_temp_f: 34.28, sht4x_temp_f: 30.74, sht4x_humidity: 94.93 },
+        { time: '2024-01-06T07:50:00', cpu_temp_f: 34.28, sht4x_temp_f: 30.65, sht4x_humidity: 95.20 },
+        { time: '2024-01-06T07:55:00', cpu_temp_f: 34.28, sht4x_temp_f: 30.67, sht4x_humidity: 94.02 },
+        { time: '2024-01-06T07:58:55', cpu_temp_f: 41.38, sht4x_temp_f: 30.63, sht4x_humidity: 94.55 },
+        { time: '2024-01-06T08:05:00', cpu_temp_f: 46.91, sht4x_temp_f: 30.74, sht4x_humidity: 92.26 },
+        { time: '2024-01-06T16:10:01', cpu_temp_f: 38.22, sht4x_temp_f: 32.97, sht4x_humidity: 97.19 },
+        { time: '2024-01-06T16:15:00', cpu_temp_f: 37.43, sht4x_temp_f: 32.96, sht4x_humidity: 97.26 },
+        { time: '2024-01-06T16:20:00', cpu_temp_f: 37.43, sht4x_temp_f: 33.10, sht4x_humidity: 97.35 },
+        { time: '2024-01-06T16:25:00', cpu_temp_f: 37.43, sht4x_temp_f: 33.12, sht4x_humidity: 96.93 },
+        { time: '2024-01-06T16:30:00', cpu_temp_f: 37.43, sht4x_temp_f: 33.03, sht4x_humidity: 97.43 },
+        { time: '2024-01-06T16:35:00', cpu_temp_f: 37.43, sht4x_temp_f: 33.06, sht4x_humidity: 97.44 },
+        { time: '2024-01-06T16:40:01', cpu_temp_f: 37.43, sht4x_temp_f: 33.14, sht4x_humidity: 97.89 },
+        { time: '2024-01-06T16:45:00', cpu_temp_f: 37.43, sht4x_temp_f: 33.14, sht4x_humidity: 97.86 },
+        { time: '2024-01-06T16:50:00', cpu_temp_f: 37.43, sht4x_temp_f: 33.21, sht4x_humidity: 97.92 },
+        { time: '2024-01-06T16:55:00', cpu_temp_f: 37.43, sht4x_temp_f: 33.34, sht4x_humidity: 97.70 },
+        { time: '2024-01-06T17:00:00', cpu_temp_f: 36.64, sht4x_temp_f: 33.11, sht4x_humidity: 98.20 },
+        { time: '2024-01-06T17:05:00', cpu_temp_f: 37.43, sht4x_temp_f: 33.07, sht4x_humidity: 98.46 },
+        { time: '2024-01-06T19:35:42', cpu_temp_f: 76.12, sht4x_temp_f: 67.99, sht4x_humidity: 38.10 },
+        { time: '2024-01-06T19:36:48', cpu_temp_f: 76.12, sht4x_temp_f: 68.48, sht4x_humidity: 37.39 },
+        { time: '2024-01-06T19:37:18', cpu_temp_f: 76.91, sht4x_temp_f: 68.74, sht4x_humidity: 37.23 },
+        { time: '2024-01-06T19:39:28', cpu_temp_f: 81.64, sht4x_temp_f: 69.26, sht4x_humidity: 36.38 },
+        { time: '2024-01-06T19:42:59', cpu_temp_f: 85.59, sht4x_temp_f: 69.85, sht4x_humidity: 35.65 },
+        { time: '2024-01-06T19:47:43', cpu_temp_f: 87.96, sht4x_temp_f: 70.13, sht4x_humidity: 35.75 },
+        { time: '2024-01-06T19:52:20', cpu_temp_f: 87.17, sht4x_temp_f: 70.21, sht4x_humidity: 35.15 },
+        { time: '2024-01-06T19:56:44', cpu_temp_f: 89.54, sht4x_temp_f: 70.41, sht4x_humidity: 34.87 },
+        { time: '2024-01-06T19:57:11', cpu_temp_f: 91.12, sht4x_temp_f: 70.45, sht4x_humidity: 35.49 },
+        { time: '2024-01-06T19:57:31', cpu_temp_f: 87.96, sht4x_temp_f: 70.42, sht4x_humidity: 34.88 },
+        { time: '2024-01-06T20:01:16', cpu_temp_f: 87.96, sht4x_temp_f: 70.43, sht4x_humidity: 34.83 },
+        { time: '2024-01-06T20:04:15', cpu_temp_f: 90.33, sht4x_temp_f: 70.47, sht4x_humidity: 35.15 },
+        { time: '2024-01-06T20:04:34', cpu_temp_f: 90.33, sht4x_temp_f: 70.58, sht4x_humidity: 35.62 },
+        { time: '2024-01-06T20:04:47', cpu_temp_f: 88.75, sht4x_temp_f: 70.59, sht4x_humidity: 34.87 },
+        { time: '2024-01-06T20:05:00', cpu_temp_f: 87.17, sht4x_temp_f: 70.54, sht4x_humidity: 34.83 },
+        { time: '2024-01-06T20:05:30', cpu_temp_f: 88.75, sht4x_temp_f: 70.58, sht4x_humidity: 34.98 },
+        { time: '2024-01-06T20:06:00', cpu_temp_f: 87.96, sht4x_temp_f: 70.55, sht4x_humidity: 34.80 },
+        { time: '2024-01-06T20:06:30', cpu_temp_f: 88.75, sht4x_temp_f: 70.51, sht4x_humidity: 34.81 },
+        { time: '2024-01-06T20:07:00', cpu_temp_f: 88.75, sht4x_temp_f: 70.58, sht4x_humidity: 34.78 },
+        { time: '2024-01-06T20:07:30', cpu_temp_f: 88.75, sht4x_temp_f: 70.58, sht4x_humidity: 35.30 },
+        { time: '2024-01-06T20:08:00', cpu_temp_f: 89.54, sht4x_temp_f: 70.62, sht4x_humidity: 34.70 },
+      ]; </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1"></script>
+    <script src="https://unpkg.com/hammerjs@2.0.8/hammer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.27.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@v3.0.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
+
+
+    <style>
+      canvas {
+        display: block;
+        position: inline-block;
+        border: 1px solid black;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 90% !important;
+        width: 100% !important;
+      }
+    </style>
+
+    <canvas id="myChart"></canvas>
+
+    <script>
+
+      function zipArraysWithLabels(arr1, arr2) {
+        const zipped = [];
+        const length = Math.min(arr1.length, arr2.length);
+
+        for (let i = 0; i < length; i++) {
+          zipped.push({ x: arr1[i], y: arr2[i] }); // Create objects with labeled keys
+        }
+
+        return zipped;
+      }
+
+      const dataTemp = srcData.map(obj => ({
+        x: obj.time,
+        y: obj.sht4x_temp_f
+      }));
+      const dataHum = srcData.map(obj => ({
+        x: obj.time,
+        y: obj.sht4x_humidity
+      }));
+      new Chart("myChart", {
+        type: "line",
+        data: {
+          datasets: [{
+            label: "Temperature",
+            display: true,
+            yAxisID: 'yT',
+            fill: false,
+            pointRadius: 1,
+            borderColor: "rgba(255,0,0,0.5)",
+            data: dataTemp
+          },
+          {
+            label: "Humidity",
+            display: true,
+            yAxisID: 'yH',
+            fill: false,
+            pointRadius: 1,
+            borderColor: "rgba(0,0,255,0.6)",
+            data: dataHum
+          }]
+        },
+        options: {
+          legend: { display: true },
+          scales: {
+            x: {
+              type: 'time',
+              time: {
+                unit: 'minute',
+                displayFormats: {
+                  minute: 'yyyy-MM-dd HH:mm',
+                },
+
+              },
+              ticks: {
+                source: 'auto',
+                autoSkip: false,
+                maxTicksLimit: 25,
+              }
+
+            },
+            yT: {
+              type: 'linear',
+              title: {
+                text: 'temperature F',
+                display: true,
+                color: "rgba(255,0,0,0.5)",
+              },
+              display: true,
+              position: 'left',
+              grid: {
+                color: "rgba(255,0,0,0.5)",
+              },
+              ticks: {
+                color: "rgba(255,0,0,0.5)",
+              },
+              max: 90,
+              min: -10,
+            },
+            yH: {
+              type: 'linear',
+              title: {
+                text: 'humidity %',
+                display: true,
+                color: "rgba(0,0,255,0.6)",
+              },
+              display: true,
+              position: 'left',
+              grid: {
+                color: "rgba(0,0,255,0.5)",
+              },
+              ticks: {
+                color: "rgba(0,0,255,0.5)",
+              },
+              max: 100,
+              min: 0
+            },
+          },
+          title: {
+            display: false,
+            // text: "y = x * 2 + 7",
+            fontSize: 16
+          },
+          plugins: {
+            zoom: {
+              zoom: {
+
+                wheel: {
+                  enabled: true,
+                  modifierKey: 'ctrl',
+                },
+                pinch: {
+                  enabled: true
+                },
+                mode: 'x',
+              },
+              pan: {
+                enabled: true,
+              },
+            }
+          }
+        }
+      });
+    </script>
+  <p>request time: 0.521 secs</p>
+
+  <p><a href="/to_ap"><button class="button">AP</button></a></p>
+  <p><a href="/to_sta"><button class="button">STA</button></a></p>
+  <pre>
+Manual options: 
+..../setsleep?time=300 - to set deep sleep interval to 300 seconds
+..../clearmeasurements - to clear all recorded measurements filed
+..../clearlog - to clear syslog meassages filed
+</pre>
+  <p>
+</body>
+
+</html>
